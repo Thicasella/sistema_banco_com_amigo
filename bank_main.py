@@ -1,17 +1,27 @@
 # Lista de usuários
-usuario = ["thiago", "jojho"]
+usuarios = ["thiago", "john"]
+senhas = [2112, 1707]
 
 # Mensagem de boas-vindas
 print('Olá, bem-vindo ao Banco Itacu')
 print('Digite o número da sua conta e sua senha')
 
 # Receber o nome do usuário
-acesso_nome = input("Digite seu usuário: ")
+acesso_nome = input("Digite seu usuário: ").strip().lower()
+acesso_senha = int(input("Digite sua senha: ").strip())
 
-# Verificar se o nome está na lista de usuários permitidos
-if acesso_nome in usuario:
-    print('Acesso permitido')
+# Verificando usuario
+if acesso_nome in usuarios:
+    # Encontrando o índice do usuário na lista
+    indice = usuarios.index(acesso_nome)
+    
+    # Verificando se a senha correspondente está correta
+    if senhas[indice] == acesso_senha:
+        print('Acesso permitido')
+    else:
+        print('Senha incorreta')
 else:
-    print('Acesso negado, esse usuário não existe')
+    print("Usuário não encontrado.")
 
-
+print("Bem vindo {}, o que gostaria de fazer? ".format(acesso_nome))
+print("Sacar, Extrato ou Depositar")
