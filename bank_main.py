@@ -17,7 +17,7 @@ acesso_senha = 0
 
 while True:
     acesso_nome = input("Digite seu usuário: ").strip().lower()
-    acesso_senha = getpass.getpass("Digite sua senha: ").strip()
+    acesso_senha = int(input("Digite sua senha: ").strip())
     #acesso_senha = int(input("Digite sua senha: ").strip())
     
     # Convertendo a senha para inteiro para comparação
@@ -49,19 +49,22 @@ def saldo():
 
 def saque():
     os.system("cls")
-    print('Você selecionou sacar ')
-    saque= float(input(print('Quanto você deseja sacar? : ')))
-    novo_saldo =  valor[indice] - saque
-    print('Você sacou {}, seu saldo atual é {}'.format(saque, novo_saldo))
-    #valor[indice] += saque
+    print('Você selecionou sacar')
+    saque = float(input('Quanto você deseja sacar? : '))
+    
+    if saque > valor[indice]:
+        print('Saldo insuficiente.')
+    else:
+        valor[indice] -= saque  # Atualizando o saldo na lista
+        print('Você sacou R${:.2f}, seu saldo atual é R${:.2f}'.format(saque, valor[indice]))
 
 def deposito():
     os.system("cls")
     print('Você escolheu depositar')
-    depositar= float(input(print('quanto você deseja depositar? : ')))
-    novo_deposito =  valor[indice] + depositar
-    print('Você depositou {}, seu saldo atual é {}'.format(depositar, novo_deposito))
-    #valor[indice] += depositar
+    depositar = float(input('Quanto você deseja depositar? : '))
+    
+    valor[indice] += depositar  # Atualizando o saldo na lista
+    print('Você depositou R${:.2f}, seu saldo atual é R${:.2f}'.format(depositar, valor[indice]))
 
 if entrada == 1:
     saque()
