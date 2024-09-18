@@ -44,9 +44,6 @@ def saque():
     os.system("cls")
     print('Você selecionou sacar.')
     saque_valor = float(input('Quanto você deseja sacar? : '))
-    if 0 <= indice < len(valor):
-        valor[indice] -= saque_valor
-        print(f"Valor atualizado: {valor[indice]}")
     
     if saque_valor > valor[indice]:
         print('Saldo insuficiente.')
@@ -62,9 +59,6 @@ def deposito():
     os.system("cls")
     print('Você selecionou depositar.')
     deposito_valor = float(input('Quanto você deseja depositar? : '))
-    if 0 <= indice < len(valor):
-        valor[indice] -= deposito_valor
-        print(f"Valor atualizado: {valor[indice]}")
     
     valor[indice] += deposito_valor  # Atualizando o saldo na lista
     print('Você depositou R${:.2f}, seu saldo atual é R${:.2f}'.format(deposito_valor, valor[indice]))
